@@ -24,13 +24,10 @@ namespace Task1
 
         static string[] GetAllStudents(Classroom[] classes)
         {
-            var result = new List<string>();
+            var result = from с in classes
+                         from student in с.Students
+                         select student;
 
-            foreach (var c in classes)
-            {
-                foreach (var student in c.Students)
-                    result.Add(student);
-            }
             return result.ToArray();
         }
     }
